@@ -17,7 +17,7 @@ class SfdcUser(object):
         self.permissions = permissions
 
     def __str__(self):
-        return "[", self.first_name, " ", self.last_name, " ", self.title, " ", self.profile, " ", self.permissions
+        return '[%s, %s, %s, %s, %s]' % (self.first_name, self.last_name, self.title, self.profile, self.permissions)
 
     def first_name(self):
         return self.first_name
