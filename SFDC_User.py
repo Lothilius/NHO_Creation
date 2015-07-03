@@ -10,12 +10,14 @@ class SfdcUser(object):
 
     def __int__(self, first_name, last_name, title, profile, permissions):
         """Create an empty User Object"""
-        self.user = {first_name: '', last_name: '', title: '', profile: '', permissions: ''}
         self.first_name = first_name
         self.last_name = last_name
         self.title = title
         self.profile = profile
         self.permissions = permissions
+
+    def __str__(self):
+        return "[", self.first_name, " ", self.last_name, " ", self.title, " ", self.profile, " ", self.permissions
 
     def first_name(self):
         return self.first_name
@@ -36,14 +38,14 @@ class SfdcUser(object):
         return self.permissions
 
     def is_empty(self):
-        return not self.user
+        return not self._user
 
     # Split First and Last Name
     def add_name(self, the_name):
         the_name = self.clean_name(the_name)
         the_name = the_name.split(' ')
-        self.user['first_name'] = the_name[0]
-        self.user['last_name'] = the_name[1]
+        self.first_name = the_name[0]
+        self.last_name = the_name[1]
 
     def add_profile_id(self, user_info):
         for i in session.query(Profiles.id).order_by(desc(Profiles.id)).limit(100):
