@@ -59,5 +59,9 @@ target/
 authentication.py
 facebook-sdk/
 
+# Project Files
+*.xlsx
+*.xls
+
 # Test files
 test.py
