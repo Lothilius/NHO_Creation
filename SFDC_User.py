@@ -8,16 +8,19 @@ class SfdcUser(object):
     """ This module creates a SFDC user from the first and last name and Profile.
     """
 
-    def __int__(self, first_name, last_name, title, profile, permissions):
+    def __int__(self, first_name, last_name, email, title, manager, profile, permissions):
         """Create an empty User Object"""
         self.first_name = first_name
         self.last_name = last_name
+        self.email = email
         self.title = title
+        self.manager = manager
         self.profile = profile
         self.permissions = permissions
 
     def __str__(self):
-        return '[%s, %s, %s, %s, %s]' % (self.first_name, self.last_name, self.title, self.profile, self.permissions)
+        return '[%s, %s, %s, %s, %s, %s, %s]' % (self.first_name, self.last_name,
+                                                 self.email, self.title, self.manager, self.profile, self.permissions)
 
     def first_name(self):
         return self.first_name
@@ -25,20 +28,21 @@ class SfdcUser(object):
     def last_name(self):
         return self.last_name
 
+    # todo fix to print email
+    def email(self):
+        return '%s.%s@bazaarvoice.com' % (self.first_name, self.last_name)
+
     def title(self):
         return self.title
 
-    def email(self):
-        return self.first_name, '.', self.last_name, '@bazaarvoice.com'
+    def manager(self):
+        return self.manager
 
     def profile(self):
         return self.profile
 
     def permissions(self):
         return self.permissions
-
-    def is_empty(self):
-        return not self._user
 
     # Split First and Last Name
     def add_name(self, the_name):

@@ -39,7 +39,7 @@ def main():
     user_list = SfdcUser()
     user_list.add_name(csv_info[1, 2])
 
-    print user_list
+    print user_list.email()
     # try:
     #     login(browser)
     #     browser.implicitly_wait(15)
