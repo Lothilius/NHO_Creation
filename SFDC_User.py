@@ -2,6 +2,7 @@ __author__ = 'Lothilius'
 
 import re
 import numpy as np
+import Permissions
 
 
 class SfdcUser(object):
@@ -28,7 +29,9 @@ class SfdcUser(object):
     def last_name(self):
         return self.last_name
 
-    # todo fix to print email
+    def name(self):
+        return '%s %s' % (self.first_name, self.last_name)
+
     def email(self):
         return '%s.%s@bazaarvoice.com' % (self.first_name, self.last_name)
 
@@ -54,6 +57,9 @@ class SfdcUser(object):
     def add_profile_id(self, user_info):
         for i in session.query(Profiles.id).order_by(desc(Profiles.id)).limit(100):
                     user_info.append(i)
+
+    def add_permissions(self):
+        self.permissions = Permissions(self.title)
 
     # Clean up the Data so that consultants are caught
     def clean_name(self, the_name):
