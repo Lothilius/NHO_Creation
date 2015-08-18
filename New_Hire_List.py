@@ -4,7 +4,7 @@ import SFDC_User
 import numpy as np
 
 
-class NewHireList():
+class NewHireList:
     """Create a New Hire List object that holds the data of many
         Users and their permissions.
     """
