@@ -113,6 +113,6 @@ def create_user(first_name, last_name, email, user_name, type, profile, role='')
             print the_error
         else:
             print 'We are good!'
-            browser.get(baseurl)
+            webdriver.close()
     except common.exceptions.NoSuchElementException, e:
         print '3', e
