@@ -109,3 +109,7 @@ class SfdcUser:
         user_list = np.c_[user_list, csv_info[1:-1, 3]]
 
         return user_list
+
+
+class UserList():
+    pass
