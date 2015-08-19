@@ -5,7 +5,7 @@ import numpy as np
 import Permissions
 
 
-class SfdcUser(object):
+class SfdcUser:
     """ This module creates a SFDC user from the first and last name and Profile.
     """
 
@@ -49,10 +49,19 @@ class SfdcUser(object):
 
     # Split First and Last Name
     def add_name(self, the_name):
-        the_name = self.clean_name(the_name)
-        the_name = the_name.split(' ')
-        self.first_name = the_name[0]
-        self.last_name = the_name[1]
+        if the_name != '':
+            the_name = self.clean_name(the_name)
+            the_name = the_name.split(' ')
+            self.first_name = the_name[0]
+            self.last_name = the_name[1]
+
+    # Add title to the user object
+    def add_title(self, title):
+        self.title = title
+
+    # Add manager to the user object
+    def add_manager(self, manager):
+        self.manager = manager
 
     def add_profile_id(self, user_info):
         for i in session.query(Profiles.id).order_by(desc(Profiles.id)).limit(100):
