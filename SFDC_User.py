@@ -98,7 +98,7 @@ class SfdcUser:
 
         # Create email column
         for each in user_list:
-            email = createuser_email(each)
+            email = create_user_email(each)
             emails = np.append(emails, [email], 0)
 
         # Join name array with email column
