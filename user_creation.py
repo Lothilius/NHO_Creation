@@ -56,22 +56,29 @@ def main():
 
         elif mode == ('a' or 'assisted'):
             file_name = raw_input('Please enter file name: ')
-            full_file_path = '/Users/martin.valenzuela/Desktop/SFDC_exports/New_hires_' + file_name + '.csv'  # New_hires
-            csv_info = array_from_file(full_file_path)
+            while file_name != 'exit':
+                try:
+                    full_file_path = '/Users/martin.valenzuela/Desktop/SFDC_exports/New_hires_' + file_name + '.csv'  # New_hires
+                    csv_info = array_from_file(full_file_path)
+                    break
+                except IOError:
+                    print """\nNo file found with that name. \nPlease Try again. \n"""
+                    file_name = raw_input('Please enter file name: ')
 
-            for each in csv_info[12:]:
+            for each in csv_info[1:]:
+                print each[2]
                 # Create User object for each user row in csv
                 user = SfdcUser()
-                user.add_name(each[1])
-                user.add_title(each[2])
-                user.add_manager(each[3])
+                user.add_name(each[2])
+                user.add_title(each[3])
+                user.add_manager(each[4])
                 print user.email()
                 start_form_fill(environment, user.first_name, user.last_name, user.email(), user.name(), user.title,
                                 user.manager)
 
         elif mode == ('f' or 'full'):
             file_name = raw_input('Please enter file name: ')
-            full_file_path = '/Users/martin.valenzuela/Desktop/SFDC_exports/New_hires_7_23' + file_name + '.csv'  # New_hires
+            full_file_path = '/Users/martin.valenzuela/Desktop/SFDC_exports/New_hires_' + file_name + '.csv'  # New_hires
             csv_info = array_from_file(full_file_path)
             # print csv_info[1, 2]
 
